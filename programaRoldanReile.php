@@ -66,6 +66,8 @@ function cargarPartidas()
  */
 function obtenerResumenJugador($coleccionPartidas, $nombreJugador) 
 {
+    //array|null $resumenJugador
+    //int $cantPartidas, $contadorPartidas, $ContadorPuntaje, $contadorVictorias, $contadorIntentos
     $resumenJugador = null;
     $cantPartidas = count($coleccionPartidas);
     $contadorPartidas = 0;

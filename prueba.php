@@ -78,8 +78,9 @@ do {
     
             break; 
         case 7: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-        
+            $nuevaPalabra = leerPalabra5Letras();
+            $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
+            print_r($coleccionPalabras);
             break; 
         case 8: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3

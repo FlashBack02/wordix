@@ -107,6 +107,48 @@ function obtenerResumenJugador($coleccionPartidas, $nombreJugador)
     return $resumenJugador;
 }
 
+/**
+ * Menu de opciones que retorna la opción elegida por el usuario
+ * @return int 
+ */
+function seleccionarOpcion()
+ {
+     //int $opc
+     echo "\n \n┏━━━━━━•(=^●ω●^=)•━━━━━━┓ \n \n";
+     echo escribirGris("Elija una opción del 1 al 8"). "\n";
+     echo "Menú de opciones: \n";
+     echo "1) Jugar al wordix con una palabra elegida \n";
+     echo "2) Jugar al wordix con una palabra aleatoria \n";
+     echo "3) Mostrar una partida \n";
+     echo "4) Mostrar la primer partida ganadora \n";
+     echo "5) Mostrar resumen de Jugador \n";
+     echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
+     echo "7) Agregar una palabra de 5 letras a Wordix \n";
+     echo "8) salir \n \n";
+     echo "┗━━━━━━•(=^●ω●^=)•━━━━━━┛ \n";
+     $opc = trim(fgets(STDIN));
+     return $opc;
+ }
+ 
+ /**
+  * Función que solicita el nombre del usuario, verifica que el nombre inicie con una letra y retorna el nombre en minúsculas.
+  * @return string
+  */
+function  solicitarJugador()
+ {
+     //int $i
+     //string $nombreJ, $esLetra
+     $i = 0;
+     $esLetra = false;
+     while ($esLetra == false){
+         echo "Ingrese el nombre del jugador/a: \n";
+         echo "El nombre debe iniciar con una letra ⚠️ \n";
+         $nombreJ = trim(fgets(STDIN));
+         $esLetra = ctype_alpha($nombreJ[$i]);
+     }return strtolower($nombreJ);
+ }
+ 
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/

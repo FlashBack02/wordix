@@ -144,8 +144,8 @@ function  solicitarJugador()
          echo "Ingrese el nombre del jugador/a: \n";
          echo "El nombre debe iniciar con una letra ⚠️ \n";
          $nombreJ = trim(fgets(STDIN));
-         $esLetra = ctype_alpha($nombreJ[$i]);
-     }return strtolower($nombreJ);
+         $esLetra = ctype_alpha($nombreJ[$i]); // = Verifica si el carácter en la posición actual $i de la cadena es una letra del alfabeto
+     }return strtolower($nombreJ); // Devuelve el usuario en minúsculas
  }
  
  /**
@@ -166,6 +166,27 @@ function mostrarPartida($num, $partidas)
         echo "Intento: No adivinó la palabra" . "\n";
     }
     echo "\n└──────── °∘❉∘° ────────┘\n\n";
+}
+
+/**
+ * Funcion que verifica que el usuario no haya jugado anteriormente con una palabra
+ * @param string $jugador
+ * @param string $palabra
+ * @param array $partidasC
+ * @return bool
+ */
+function existePalabraEnPartidas($jugador, $palabra, $partidasC) {
+    $numPartidas = count($partidasC);
+
+    for ($i = 0; $i < $numPartidas; $i++) {
+        $partida = $partidasC[$i];
+
+        if ($partida["jugador"] === $jugador && strtolower($partida["palabraWordix"]) === strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
+            return true;
+        }
+    }
+
+    return false;
 }
 
 /**************************************/

@@ -16,15 +16,35 @@ do {
             //string $nombreHugador
             //int $cantPalabras, $numPalabras
             //array $partida
-                $nombreJugador = solicitarJugador();
-                $cantPalabras = count($coleccionPalabras);
-                $numPalabra = solicitarNumeroEntre(0, $cantPalabras-1);
-                $partida = jugarWordix($coleccionPalabras[$numPalabra], strtolower($nombreJugador));
-                $partidasCargadas[count($partidasCargadas)]=["palabraWordix"=>$partida["palabraWordix"], "jugador"=>$nombreJugador, "intentos"=>$partida["intentos"], "puntaje"=>$partida["puntaje"]];
+            $nombreJugador = solicitarJugador();
+            $cantPalabras = count($coleccionPalabras);
+            $numPalabra = solicitarNumeroEntre(0, $cantPalabras-1);
+            $partida = jugarWordix($coleccionPalabras[$numPalabra], strtolower($nombreJugador));
+            $partidasCargadas[] = [
+                "palabraWordix" => $partida["palabraWordix"],
+                "jugador" => $nombreJugador,
+                 "intentos" => $partida["intentos"],
+                 "puntaje" => $partida["puntaje"]
+            ];
             break;
         case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+            $nombreJugador = solicitarJugador();
+            $cantPartidas = count($partidasCargadas);
+            $cantPalabras = count($coleccionPalabras);
+            $numRandom = random_int(0, $cantPalabras - 1);
 
+           // Verificar que la palabra no ha sido usada por el jugador antes
+            while (existePalabraEnPartidas($nombreJugador, $coleccionPalabras[$numRandom], $partidasCargadas)) {
+              $numRandom = random_int(0, $cantPalabras - 1);
+            }
+
+            $partida = jugarWordix($coleccionPalabras[$numRandom], strtolower($nombreJugador));
+            $partidasCargadas[] = [
+                 "palabraWordix" => $partida["palabraWordix"],
+                 "jugador" => $nombreJugador,
+                 "intentos" => $partida["intentos"],
+                 "puntaje" => $partida["puntaje"]
+            ];
             break;
         case 3: 
             $cantPartidas = count($partidasCargadas);

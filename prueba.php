@@ -20,7 +20,7 @@ do {
                 $cantPalabras = count($coleccionPalabras);
                 $numPalabra = solicitarNumeroEntre(0, $cantPalabras-1);
                 $partida = jugarWordix($coleccionPalabras[$numPalabra], strtolower($nombreJugador));
-                $partidasCargadas[count($partidasCargadas)]=["palabraWordix"=>$partida["palabraWordix"], "jugador"=>$nombre, "intentos"=>$partida["intentos"], "puntaje"=>$partida["puntaje"]];
+                $partidasCargadas[count($partidasCargadas)]=["palabraWordix"=>$partida["palabraWordix"], "jugador"=>$nombreJugador, "intentos"=>$partida["intentos"], "puntaje"=>$partida["puntaje"]];
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
@@ -36,7 +36,7 @@ do {
                do {
                 echo "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n";
                 echo "Error, no existe esa partida. \n";
-                echo "Vuelva a ingresar un número de partida: \n";
+                echo "Vuelva a ingresar un número de partida:";
                 echo "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n";
                 $numPartida = trim(fgets(STDIN));
                 } while ($numPartida < 0 || $numPartida >= $cantPartidas);

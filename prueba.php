@@ -84,8 +84,27 @@ do {
             }
             break;
         case 5: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-
+            $nombreJugador = solicitarJugador();
+            $resumenJugador = obtenerResumenJugador($partidasCargadas, $nombreJugador);
+            if($resumenJugador != null){
+                echo "\n┌──────── ∘°❉°∘ ────────┐\n\n";
+                echo "Jugador: ". $resumenJugador["jugador"] . "\n";
+                echo "Partidas: ". $resumenJugador["partidas"] . "\n";
+                echo "Puntaje total: " .  $resumenJugador["puntaje"] . "\n";
+                echo "Victorias: ". $resumenJugador["victorias"] . "\n";
+                echo "Porcentaje de victorias: ". (($resumenJugador["victorias"]*100)/$resumenJugador["partidas"]). "\n";
+                echo "Adivinadas: \n";
+                for($i=1; $i <= $resumenJugador["partidas"]; $i++){
+                    echo "      Intento ". $i. " : ". $resumenJugador["intentos" . $i]. "\n";
+                }
+                echo "\n└──────── °∘❉∘° ────────┘\n\n";
+            }else{
+                echo "\n─────▄───▄ \n";
+                echo "─▄█▄─█▀█▀█─▄█▄ \n";
+                echo "▀▀████▄█▄████▀▀\n";
+                echo "─────▀█▀█▀ \n";
+                echo "El jugador ". $nombreJugador. " no ganó ninguna partida. \n";
+            }
             break;
         case 6: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3

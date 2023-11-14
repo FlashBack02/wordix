@@ -176,17 +176,30 @@ function mostrarPartida($num, $partidas)
  * @return bool
  */
 function existePalabraEnPartidas($jugador, $palabra, $partidasC) {
+    //int $numPartidas, $i
     $numPartidas = count($partidasC);
 
     for ($i = 0; $i < $numPartidas; $i++) {
         $partida = $partidasC[$i];
 
-        if ($partida["jugador"] === $jugador && strtolower($partida["palabraWordix"]) === strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
+        if ($partida["jugador"] == $jugador && strtolower($partida["palabraWordix"]) == strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
             return true;
         }
     }
 
     return false;
+}
+
+/**
+ * Función que agrega una nueva palabra al array con la colección de palabras para jugar
+ * @param array $palabraColeccion
+ * @param string $palabra
+ * @return array //retorna el array con la nueva palabra
+ */
+function agregarPalabra($palabraColeccion, $palabra)
+{
+    $palabraColeccion[] = $palabra;
+    return $palabraColeccion;
 }
 
 /**************************************/

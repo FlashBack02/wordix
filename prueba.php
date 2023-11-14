@@ -13,7 +13,7 @@ do {
     $opcion = seleccionarOpcion();
     switch ($opcion) {
         case 1: 
-            //string $nombreHugador
+            //string $nombreJugador
             //int $cantPalabras, $numPalabras
             //array $partida
             $nombreJugador = solicitarJugador();
@@ -65,12 +65,23 @@ do {
                 } while ($numPartida < 0 || $numPartida >= $cantPartidas);
             }
 
-            echo "Número de partida seleccionado: $numPartida\n";
+            echo "Número de partida seleccionado:" . $numPartida."\n";
             mostrarPartida($numPartida, $partidasCargadas);
             break;
         case 4: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-    
+            $nombreJugador = solicitarJugador();
+            $indice = primerPartidaGanadaPor($partidasCargadas, $nombreJugador);
+
+            if($indice != -1){
+            echo "Número de partida seleccionado:". $indice ."\n";
+            mostrarPartida($indice, $partidasCargadas);
+            } else{
+                echo "\n─────▄───▄ \n";
+                echo "─▄█▄─█▀█▀█─▄█▄ \n";
+                echo "▀▀████▄█▄████▀▀\n";
+                echo "─────▀█▀█▀ \n";
+                echo "El jugador ". $nombreJugador. " no ganó ninguna partida. \n";
+            }
             break;
         case 5: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3

@@ -54,7 +54,10 @@ do {
 
             if ($numPartida < 0 || $numPartida >= $cantPartidas) {
                do {
-                echo "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n";
+                echo "\n─────▄───▄ \n";
+                echo "─▄█▄─█▀█▀█─▄█▄ \n";
+                echo "▀▀████▄█▄████▀▀\n";
+                echo "─────▀█▀█▀ \n";
                 echo "Error, no existe esa partida. \n";
                 echo "Vuelva a ingresar un número de partida:";
                 echo "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n";

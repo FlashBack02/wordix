@@ -202,6 +202,29 @@ function agregarPalabra($palabraColeccion, $palabra)
     return $palabraColeccion;
 }
 
+/**
+ * funcion que  dada una colección de partidas y el nombre de un jugador, retorne el índice de la primer
+ * partida ganada por dicho jugador. Si el jugador ganó ninguna partida, la función debe retornar el valor -1
+ * @param array $partidasColeccion
+ * @param string $jugador
+ * @return int
+ */
+function primerPartidaGanadaPor($partidasColeccion, $jugador) {
+    //int $i, $cantPartidas, $indicePartidas
+    $i = 0;
+    $cantPartidas = count($partidasColeccion);
+    $indicePartida = -1;
+
+    while ($indicePartida == -1 && $i < $cantPartidas) {
+        if ($partidasColeccion[$i]["jugador"] == $jugador && $partidasColeccion[$i]["puntaje"] > 0) {
+            $indicePartida = $i;
+        }
+        $i++;
+    }
+
+    return $indicePartida;
+}
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/

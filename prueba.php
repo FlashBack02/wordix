@@ -114,15 +114,17 @@ do {
             $nuevaPalabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
             print_r($coleccionPalabras);
-            break; 
-        case 8: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-        
+            
             break; 
         default: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-        
-            break; 
+            echo "\n─────▄───▄ \n";
+            echo "─▄█▄─█▀█▀█─▄█▄ \n";
+            echo "▀▀████▄█▄████▀▀\n";
+            echo "─────▀█▀█▀ \n";
+            echo escribirRojo("ERROR, no existe esa opción X_X")."\n";
+            echo escribirRojo("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")."\n";
+            echo escribirRojo("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")."\n";
+        break;
 
     }
 } while ($opcion != 8);

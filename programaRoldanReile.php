@@ -42,16 +42,16 @@ function cargarPartidas()
     //array  $coleccionPartidas
     //Crea el arreglo multidimencional (indexado que almacena arreglos asociativos)
     $coleccionPartidas = [];
-    $coleccionPartidas[0] = ["palabraWordix "=> "QUESO" , "jugador" => "majo", "intentos"=> 0, "puntaje" => 0];
-    $coleccionPartidas[1] = ["palabraWordix "=> "CASAS" , "jugador" => "rudolf", "intentos"=> 3, "puntaje" => 15];
-    $coleccionPartidas[2] = ["palabraWordix "=> "YUYOS" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 10];
-    $coleccionPartidas[3] = ["palabraWordix "=> "MELON" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 2];
-    $coleccionPartidas[4] = ["palabraWordix "=> "JAMON" , "jugador" => "majo", "intentos"=> 2, "puntaje" => 5];
-    $coleccionPartidas[5] = ["palabraWordix "=> "CASAS" , "jugador" => "pink2000", "intentos"=> 4, "puntaje" => 6];
-    $coleccionPartidas[6] = ["palabraWordix "=> "VERDE" , "jugador" => "rudolf", "intentos"=> 1, "puntaje" => 3];
-    $coleccionPartidas[7] = ["palabraWordix "=> "FUEGO" , "jugador" => "pink2000", "intentos"=> 5, "puntaje" => 9];
-    $coleccionPartidas[8] = ["palabraWordix "=> "YUYOS" , "jugador" => "rudolf", "intentos"=> 4, "puntaje" => 11];
-    $coleccionPartidas[9] = ["palabraWordix "=> "RASGO" , "jugador" => "majo", "intentos"=> 2, "puntaje" => 10];
+    $coleccionPartidas[0] = ["palabraWordix"=> "QUESO" , "jugador" => "majo", "intentos"=> 0, "puntaje" => 0];
+    $coleccionPartidas[1] = ["palabraWordix"=> "CASAS" , "jugador" => "rudolf", "intentos"=> 3, "puntaje" => 15];
+    $coleccionPartidas[2] = ["palabraWordix"=> "YUYOS" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 10];
+    $coleccionPartidas[3] = ["palabraWordix"=> "MELON" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 2];
+    $coleccionPartidas[4] = ["palabraWordix"=> "JAMON" , "jugador" => "majo", "intentos"=> 2, "puntaje" => 5];
+    $coleccionPartidas[5] = ["palabraWordix"=> "CASAS" , "jugador" => "pink2000", "intentos"=> 4, "puntaje" => 6];
+    $coleccionPartidas[6] = ["palabraWordix"=> "VERDE" , "jugador" => "rudolf", "intentos"=> 1, "puntaje" => 3];
+    $coleccionPartidas[7] = ["palabraWordix"=> "FUEGO" , "jugador" => "pink2000", "intentos"=> 5, "puntaje" => 9];
+    $coleccionPartidas[8] = ["palabraWordix"=> "YUYOS" , "jugador" => "rudolf", "intentos"=> 4, "puntaje" => 11];
+    $coleccionPartidas[9] = ["palabraWordix"=> "RASGO" , "jugador" => "majo", "intentos"=> 2, "puntaje" => 10];
 
     //retorna la colección de partidas
     return $coleccionPartidas;
@@ -148,6 +148,25 @@ function  solicitarJugador()
      }return strtolower($nombreJ);
  }
  
+ /**
+ * Funcion que muestra una partida por pantalla
+ * @param int $num
+ * @param array $partidas
+ */
+function mostrarPartida($num, $partidas)
+{
+    echo "\n┌──────── ∘°❉°∘ ────────┐\n\n";
+    echo "Partida WORDIX ". $num . ":" . "\n";
+    echo "palabra ". $partidas[$num]["palabraWordix"] . "\n";
+    echo "Jugador: " .  $partidas[$num]["jugador"] . "\n";
+    echo "Puntaje: ". $partidas[$num]["puntaje"]  . " puntos" . "\n";
+    if ($partidas[$num]["puntaje"] > 0){
+        echo "Adivinó la palabra en " . $partidas[$num]["intentos"]  . " intentos" . "\n";
+    }else {
+        echo "Intento: No adivinó la palabra" . "\n";
+    }
+    echo "\n└──────── °∘❉∘° ────────┘\n\n";
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -161,7 +180,7 @@ function  solicitarJugador()
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+//$partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
 //imprimirResultado($partida);
 

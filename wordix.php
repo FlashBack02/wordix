@@ -3,8 +3,8 @@
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Roldán, Magdalena. FAI 2855. Carrera. mail. Usuario Github */
-/* Reile, Ariana Belen. FAI 5056. Tecnicatura en desarrollo web. arireile02@gmail.com. https://github.com/FlashBack02 */
+/* Roldán, Magdalena. FAI 2855. Carrera. mail. magdaRoland  */
+/* Reile, Ariana Belen. FAI 5056. Tecnicatura en desarrollo web. arireile02@gmail.com. FlashBack02 */
 
 /*
 La librería JugarWordix posee la definición de constantes y funciones necesarias

@@ -387,7 +387,6 @@ do {
             //array $coleccionPalabras
             $nuevaPalabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
-            print_r($coleccionPalabras);
 
             break;
         case 8: 

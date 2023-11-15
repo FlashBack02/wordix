@@ -1,7 +1,7 @@
 # wordix
 Juego Wordix desarrollado en introducción a la programación (FAI)
 
-#Materia 2023
+##Materia 2023
 
 Introducción a la programación
 Tecnicatura en Desarrollo Web

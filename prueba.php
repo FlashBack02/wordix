@@ -5,13 +5,14 @@ include_once("programaRoldanReile.php");
 
 
 // PRINCIPAL
-
+//array $coleccionPalabras, $partidasCargadas
 $coleccionPalabras = cargarColeccionPalabras();
 $partidasCargadas = cargarPartidas();
 
 do {
     $opcion = seleccionarOpcion();
-    switch ($opcion) {
+    switch ($opcion) { //La sentencia switch es una estructura alternativa múltiple o tambien llamada *estructura selectiva*
+        //La sentencia switch evalúa la ExpresionMultivalor y ejecuta el ConjuntoDeSentencias que aparece junto a la cláusula case cuyo valor corresponda con ExpresionMultivalor
         case 1: 
             //string $nombreJugador
             //int $cantPalabras, $numPalabras
@@ -26,16 +27,19 @@ do {
                  "intentos" => $partida["intentos"],
                  "puntaje" => $partida["puntaje"]
             ];
-            break;
+            break; // Las sentencias break que aparecen tras cada ConjuntoDeSentencias provocan que el control salga del switch y continúe con la siguiente instrucción al switch.
         case 2: 
+            //string $nombreJugador
+            //int $cantPalabras, $cantPartidas, $numRandom 
+            //array $partida
             $nombreJugador = solicitarJugador();
             $cantPartidas = count($partidasCargadas);
             $cantPalabras = count($coleccionPalabras);
-            $numRandom = random_int(0, $cantPalabras - 1);
+            $numRandom = random_int(0, $cantPalabras - 1); //Genera un número entero aleatorio entre el mínimo y el máximo dados.
 
            // Verificar que la palabra no ha sido usada por el jugador antes
             while (existePalabraEnPartidas($nombreJugador, $coleccionPalabras[$numRandom], $partidasCargadas)) {
-              $numRandom = random_int(0, $cantPalabras - 1);
+              $numRandom = random_int(0, $cantPalabras - 1); 
             }
 
             $partida = jugarWordix($coleccionPalabras[$numRandom], strtolower($nombreJugador));
@@ -47,6 +51,7 @@ do {
             ];
             break;
         case 3: 
+            //int  $cantPartidas
             $cantPartidas = count($partidasCargadas);
 
             echo "\nIngrese un número de partida: \n";
@@ -69,6 +74,8 @@ do {
             mostrarPartida($numPartida, $partidasCargadas);
             break;
         case 4: 
+            //string $nombreJugador
+            //int  $indice 
             $nombreJugador = solicitarJugador();
             $indice = primerPartidaGanadaPor($partidasCargadas, $nombreJugador);
 
@@ -84,6 +91,9 @@ do {
             }
             break;
         case 5: 
+            //string $nombreJugador
+            //int $i
+            //array $resumenJugador
             $nombreJugador = solicitarJugador();
             $resumenJugador = obtenerResumenJugador($partidasCargadas, $nombreJugador);
             if($resumenJugador != null){
@@ -107,14 +117,20 @@ do {
             }
             break;
         case 6: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-    
+            ordenarPartidas($partidasCargadas);
             break; 
         case 7: 
+            //string $nuevaPalabra
+            //array $coleccionPalabras
             $nuevaPalabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
             print_r($coleccionPalabras);
-            
+
+            break;
+        case 8: 
+                echo "\n\n❀.•° ✿.•° ❀.•° ✿.•°•.✿ °•.❀ °•.✿ °•.❀ \n";
+                echo "  Gracias por utilizar el programa \n";
+                echo "❀.•° ✿.•° ❀.•° ✿.•°•.✿ °•.❀ °•.✿ °•.❀ \n\n";
             break; 
         default: 
             echo "\n─────▄───▄ \n";

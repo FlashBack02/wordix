@@ -3,7 +3,7 @@
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Roldán, Magdalena. FAI 2855. Tecnicatura en desarrollo web. mail. magdaRoland  */
+/* Roldán, Magdalena. FAI 2855. Tecnicatura en desarrollo web. magdaroland7@gmail.com . magdaRoland  */
 /* Reile, Ariana Belen. FAI 5056. Tecnicatura en desarrollo web. arireile02@gmail.com. FlashBack02 */
 
 /*

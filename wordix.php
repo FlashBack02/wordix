@@ -364,7 +364,10 @@ function obtenerPuntajeWordix ($palabraIntento, $nroIntento){
     $letrasGrupo2= 0;
     $sumaIntento = 0;
     $palabraIntento = strtolower($palabraIntento); //Convertimos toda la cadena a minúscula
-    
+    //La función in_array realiza comparaciones sensibles a mayúsculas y minúsculas. 
+    //Si no convertimos la palabra a minúsculas antes de comparar, 
+    //Podríamos tener resultados erróneos
+
     $longitud = strlen($palabraIntento); //obtenemos las logitud de la palabra
 
     for ($i = 0; $i < $longitud; $i++) { 

@@ -15,6 +15,7 @@ include_once("wordix.php");
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+//EXPLICACIÓN 3 PUNTO 1
 /** Obtiene una colección de palabras en un arreglo indexado
  * @return array
  */
@@ -32,7 +33,7 @@ function cargarColeccionPalabras()
 }
 
 
-
+//EXPLICACIÓN 3 PUNTO 2
 /**
  * Crea un arreglo multidimensional que almacena las partidas con la palabra, el jugador, la cantidad de intentos y el puntaje
  * @return array
@@ -57,6 +58,7 @@ function cargarPartidas()
     return $coleccionPartidas;
 }
 
+//EXPLICACIÓN 3 PUNTO 9
 /**
  * Retorna el resumen del jugador según la estructura especificada.
  *
@@ -96,7 +98,7 @@ function obtenerResumenJugador($coleccionPartidas, $nombreJugador)
     return $resumenJugador;
 }
 
-
+//EXPLICACIÓN 3 PUNTO 3
 /**
  * Menu de opciones que retorna la opción elegida por el usuario
  * @return int 
@@ -120,6 +122,8 @@ function seleccionarOpcion()
      return $opc;
  }
  
+
+ //EXPLICACIÓN 3 PUNTO 10
  /**
   * Función que solicita el nombre del usuario, verifica que el nombre inicie con una letra y retorna el nombre en minúsculas.
   * @return string
@@ -138,6 +142,7 @@ function  solicitarJugador()
      }return strtolower($nombreJ); // Devuelve el usuario en minúsculas
  }
  
+ //EXPLICACIÓN 3 PUNTO 6
  /**
  * Funcion que muestra una partida por pantalla
  * @param int $num
@@ -169,18 +174,23 @@ function existePalabraEnPartidas($jugador, $palabra, $partidasC) {
     //int $numPartidas, $i
     //bool $existe
     $numPartidas = count($partidasC);
+    $existe = false;
+    
+    $i = 0;
+    while ($i < $numPartidas && $existe == false) {
 
-    for ($i = 0; $i < $numPartidas; $i++) {
-        $partida = $partidasC[$i];
-
-        if ($partida["jugador"] == $jugador && strtolower($partida["palabraWordix"]) == strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
+        if ($partidasC[$i]["jugador"] == $jugador && strtolower($partidasC[$i]["palabraWordix"]) == strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
             $existe = true;
         }
+
+        $i++;
     }
-    $existe = false;
+    
     return $existe;
 }
 
+
+//EXPLICACIÓN 3 PUNTO 7
 /**
  * Función que agrega una nueva palabra al array con la colección de palabras para jugar
  * @param array $palabraColeccion
@@ -196,6 +206,8 @@ function agregarPalabra($palabraColeccion, $palabra)
     return $palabraColeccion;
 }
 
+
+//EXPLICACIÓN 3 PUNTO 8
 /**
  * funcion que  dada una colección de partidas y el nombre de un jugador, retorne el índice de la primer
  * partida ganada por dicho jugador. Si el jugador ganó ninguna partida, la función debe retornar el valor -1
@@ -219,6 +231,7 @@ function primerPartidaGanadaPor($partidasColeccion, $jugador) {
     return $indicePartida;
 }
 
+//EXPLICACIÓN 3 PUNTO 11
 /**
  * Funcion que sirve como parametro para uasort para comparar los elementos de un arreglo
  * @param array $partida1
@@ -244,7 +257,7 @@ function comparacionPartidas($partida1, $partida2) {
     } return $num;
 }
 
-
+//EXPLICACIÓN 3 PUNTO 11
 /**
  * Función sin retorno que muestra ordena un arreglo y luego lo muestra por pantalla
  * @param array $coleccionPartidas

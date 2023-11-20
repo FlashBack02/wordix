@@ -32,6 +32,8 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+
+//EXPLICACIÓN 3 PUNTO 5
 /**
  *  Solicita un número entero que esté entre dos números dados como parámetros, la función verifica que el número sea un INT
  *  y además verifica que el número esté en el rango correcto, de ser correcto retorna el número dado.
@@ -163,6 +165,7 @@ function esPalabra($cadena)
     return $esLetra;
 }
 
+//EXPLICACIÓN 3 PUNTO 4
 /**
  *  Solicita al usuario que ingrese una palabra de exactamente 5 letras y verifica que sí sea.
  * Y retorna la palabra en mayúsculas.

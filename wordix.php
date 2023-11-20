@@ -357,7 +357,7 @@ function esIntentoGanado($estructuraPalabraIntento)
  * @return int
  */
 function obtenerPuntajeWordix ($palabraIntento, $nroIntento){
-    //int $vocalesEncontradas, $letrasGrupo1, $letrasGrupo2, $sumaIntento, $palabraIntento, $longitud, $indice, $puntosLetra, $sumaIntento
+    //int $vocalesEncontradas, $letrasGrupo1, $letrasGrupo2, $sumaIntento, $palabraIntento, $longitud, $i, $puntosLetra, $sumaIntento
     //string $palabraIntento
     $vocalesEncontradas = 0;
     $letrasGrupo1= 0;
@@ -367,16 +367,16 @@ function obtenerPuntajeWordix ($palabraIntento, $nroIntento){
     
     $longitud = strlen($palabraIntento); //obtenemos las logitud de la palabra
 
-    for ($indice = 0; $indice < $longitud; $indice++) { 
+    for ($i = 0; $i < $longitud; $i++) { 
 
 
-        if (in_array($palabraIntento[$indice], ["a", "e", "i", "o", "u"])) //Ahora vemos si dicho carácter está dentro del arreglo ["a", "e", "i", "o", "u"]
+        if (in_array($palabraIntento[$i], ["a", "e", "i", "o", "u"])) //Ahora vemos si un carácter está dentro del arreglo ["a", "e", "i", "o", "u"]
         {
             $vocalesEncontradas++;
-        }elseif (in_array($palabraIntento[$indice], ["b", "c", "d", "f", "g", "h","j","k","l", "m"]))
+        }elseif (in_array($palabraIntento[$i], ["b", "c", "d", "f", "g", "h","j","k","l", "m"]))
         {
             $letrasGrupo1++; 
-        }elseif (in_array($palabraIntento[$indice], ["n", "o", "p", "q", "r", "s","t","v","w", "x","y","z"]))
+        }elseif (in_array($palabraIntento[$i], ["n", "o", "p", "q", "r", "s","t","v","w", "x","y","z"]))
         {
             $letrasGrupo2++; 
         }

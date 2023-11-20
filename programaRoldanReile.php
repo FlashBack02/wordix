@@ -66,46 +66,36 @@ function cargarPartidas()
  */
 function obtenerResumenJugador($coleccionPartidas, $nombreJugador) 
 {
-    //array|null $resumenJugador
-    //int $cantPartidas, $contadorPartidas, $ContadorPuntaje, $contadorVictorias, $contadorIntentos
+    //array/null $resumenJugador
+    //int $cantPartidas,$contadorPartidas, $contadorPuntaje,$contadorVictorias, $contadorIntentos, $i
     $resumenJugador = null;
     $cantPartidas = count($coleccionPartidas);
     $contadorPartidas = 0;
     $contadorPuntaje = 0;
     $contadorVictorias = 0;
+    $contadorIntentos = 1;
 
     for ($i = 0; $i < $cantPartidas; $i++) {
         if ($nombreJugador == $coleccionPartidas[$i]["jugador"]) {
             $contadorPartidas++;
             $contadorPuntaje = $contadorPuntaje + $coleccionPartidas[$i]["puntaje"];
-    
-            
+
             if ($coleccionPartidas[$i]["puntaje"] > 0) {
                 $contadorVictorias++;
             }
-            
+
+            $resumenJugador["jugador"] = $nombreJugador;
+            $resumenJugador["partidas"] = $contadorPartidas;
+            $resumenJugador["puntaje"] = $contadorPuntaje;
+            $resumenJugador["victorias"] = $contadorVictorias;
+            $resumenJugador["intentos" . $contadorIntentos] = $coleccionPartidas[$i]["intentos"];
+            $contadorIntentos++;
         }
     }
 
-    if ($contadorPartidas > 0) {
-        $resumenJugador = [
-            "jugador" => $nombreJugador, 
-            "partidas" => $contadorPartidas,
-            "puntaje" => $contadorPuntaje,
-            "victorias" => $contadorVictorias
-        ];
-    }
-        $contadorIntentos = 1;
-        for ($j = 0; $j < $cantPartidas; $j++) {
-        
-            if ($nombreJugador == $coleccionPartidas[$j]["jugador"]) {
-                $resumenJugador["intentos" . $contadorIntentos] = $coleccionPartidas[$j]["intentos"];
-                $contadorIntentos++;
-            }
-        }    
-   
     return $resumenJugador;
 }
+
 
 /**
  * Menu de opciones que retorna la opción elegida por el usuario
@@ -200,6 +190,9 @@ function existePalabraEnPartidas($jugador, $palabra, $partidasC) {
 function agregarPalabra($palabraColeccion, $palabra)
 {
     $palabraColeccion[] = $palabra;
+    //Si no se especifica una clave,
+    //se toma el máximo de los índices int existentes, y la nueva clave será ese valor máximo más 1
+    //(aunque al menos 0). Si todavía no existen índices int, la clave será 0 (cero).
     return $palabraColeccion;
 }
 
@@ -282,8 +275,8 @@ do {
             //array $partida
             $nombreJugador = solicitarJugador();
             $cantPalabras = count($coleccionPalabras);
-            $numPalabra = solicitarNumeroEntre(0, $cantPalabras-1);
-            $partida = jugarWordix($coleccionPalabras[$numPalabra], strtolower($nombreJugador));
+            $numPalabra = solicitarNumeroEntre(1, $cantPalabras);
+            $partida = jugarWordix($coleccionPalabras[$numPalabra-1], $nombreJugador);
             $partidasCargadas[] = [
                 "palabraWordix" => $partida["palabraWordix"],
                 "jugador" => $nombreJugador,
@@ -305,7 +298,7 @@ do {
               $numRandom = random_int(0, $cantPalabras - 1); 
             }
 
-            $partida = jugarWordix($coleccionPalabras[$numRandom], strtolower($nombreJugador));
+            $partida = jugarWordix($coleccionPalabras[$numRandom], $nombreJugador);
             $partidasCargadas[] = [
                  "palabraWordix" => $partida["palabraWordix"],
                  "jugador" => $nombreJugador,
@@ -319,6 +312,7 @@ do {
 
             echo "\nIngrese un número de partida: \n";
             $numPartida = trim(fgets(STDIN));
+            $numPartida = $numPartida -1;
 
             if ($numPartida < 0 || $numPartida >= $cantPartidas) {
                do {
@@ -359,6 +353,7 @@ do {
             //array $resumenJugador
             $nombreJugador = solicitarJugador();
             $resumenJugador = obtenerResumenJugador($partidasCargadas, $nombreJugador);
+            
             if($resumenJugador != null){
                 echo "\n┌──────── ∘°❉°∘ ────────┐\n\n";
                 echo "Jugador: ". $resumenJugador["jugador"] . "\n";
@@ -385,10 +380,10 @@ do {
         case 7: 
             //string $nuevaPalabra
             //array $coleccionPalabras
-            $nuevaPalabra = leerPalabra5Letras();
+             $nuevaPalabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
 
-            break;
+           break;
         case 8: 
                 echo "\n\n❀.•° ✿.•° ❀.•° ✿.•°•.✿ °•.❀ °•.✿ °•.❀ \n";
                 echo "  Gracias por utilizar el programa \n";

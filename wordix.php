@@ -276,7 +276,7 @@ function analizarPalabraIntento($palabraWordix, $estruturaIntentosWordix, $palab
     //int $cantCaracteres
     //array $estructuraPalabraIntento
     //string $letraIntento
-    $cantCaracteres = strlen($palabraIntento); //STRLEN = convierte un strean en INT
+    $cantCaracteres = strlen($palabraIntento); //STRLEN = convierte un string en INT
     $estructuraPalabraIntento = []; /*almacena cada letra de la palabra intento con su estado */
     for ($i = 0; $i < $cantCaracteres; $i++) {
         $letraIntento = $palabraIntento[$i];

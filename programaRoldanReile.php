@@ -45,8 +45,8 @@ function cargarPartidas()
     $coleccionPartidas = [];
     $coleccionPartidas[0] = ["palabraWordix"=> "QUESO" , "jugador" => "majo", "intentos"=> 0, "puntaje" => 0];
     $coleccionPartidas[1] = ["palabraWordix"=> "CASAS" , "jugador" => "rudolf", "intentos"=> 3, "puntaje" => 15];
-    $coleccionPartidas[2] = ["palabraWordix"=> "YUYOS" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 10];
-    $coleccionPartidas[3] = ["palabraWordix"=> "MELON" , "jugador" => "pink2000", "intentos"=> 6, "puntaje" => 2];
+    $coleccionPartidas[2] = ["palabraWordix"=> "YUYOS" , "jugador" => "pink2000", "intentos"=> 3, "puntaje" => 10];
+    $coleccionPartidas[3] = ["palabraWordix"=> "MELON" , "jugador" => "pink2000", "intentos"=> 4, "puntaje" => 2];
     $coleccionPartidas[4] = ["palabraWordix"=> "JAMON" , "jugador" => "majo", "intentos"=> 2, "puntaje" => 5];
     $coleccionPartidas[5] = ["palabraWordix"=> "CASAS" , "jugador" => "pink2000", "intentos"=> 4, "puntaje" => 6];
     $coleccionPartidas[6] = ["palabraWordix"=> "VERDE" , "jugador" => "rudolf", "intentos"=> 1, "puntaje" => 3];
@@ -75,7 +75,12 @@ function obtenerResumenJugador($coleccionPartidas, $nombreJugador)
     $contadorPartidas = 0;
     $contadorPuntaje = 0;
     $contadorVictorias = 0;
-    $contadorIntentos = 1;
+    $contadorIntentos1 = 0;
+    $contadorIntentos2 = 0;
+    $contadorIntentos3 = 0;
+    $contadorIntentos4 = 0;
+    $contadorIntentos5 = 0;
+    $contadorIntentos6 = 0;
 
     for ($i = 0; $i < $cantPartidas; $i++) {
         if ($nombreJugador == $coleccionPartidas[$i]["jugador"]) {
@@ -86,13 +91,33 @@ function obtenerResumenJugador($coleccionPartidas, $nombreJugador)
                 $contadorVictorias++;
             }
 
-            $resumenJugador["jugador"] = $nombreJugador;
-            $resumenJugador["partidas"] = $contadorPartidas;
-            $resumenJugador["puntaje"] = $contadorPuntaje;
-            $resumenJugador["victorias"] = $contadorVictorias;
-            $resumenJugador["intentos" . $contadorIntentos] = $coleccionPartidas[$i]["intentos"];
-            $contadorIntentos++;
+            if($coleccionPartidas[$i]["intentos"] == 0)
+                $contadorIntentos1++;
+            elseif($coleccionPartidas[$i]["intentos"] == 1)
+                $contadorIntentos2++;
+            elseif($coleccionPartidas[$i]["intentos"] == 2)
+                $contadorIntentos3++;
+            elseif($coleccionPartidas[$i]["intentos"] == 3)
+                $contadorIntentos4++;
+            elseif($coleccionPartidas[$i]["intentos"] == 4)
+                $contadorIntentos5++;
+            elseif($coleccionPartidas[$i]["intentos"] == 5)
+                $contadorIntentos6++;
         }
+    }
+    if ($contadorPartidas > 0) {
+        $resumenJugador = [
+            "jugador" => $nombreJugador, 
+            "partidas" => $contadorPartidas,
+            "puntaje" => $contadorPuntaje,
+            "victorias" => $contadorVictorias,
+            "intentos" . 1  => $contadorIntentos1,
+            "intentos" . 2  => $contadorIntentos2,
+            "intentos" . 3  => $contadorIntentos3,
+            "intentos" . 4  => $contadorIntentos4,
+            "intentos" . 5  => $contadorIntentos5,
+            "intentos" . 6  => $contadorIntentos6
+        ];
     }
 
     return $resumenJugador;
@@ -375,7 +400,7 @@ do {
                 echo "Victorias: ". $resumenJugador["victorias"] . "\n";
                 echo "Porcentaje de victorias: ". (($resumenJugador["victorias"]*100)/$resumenJugador["partidas"]). "\n";
                 echo "Adivinadas: \n";
-                for($i=1; $i <= $resumenJugador["partidas"]; $i++){
+                for($i=1; $i <= 6; $i++){
                     echo "      Intento ". $i. " : ". $resumenJugador["intentos" . $i]. "\n";
                 }
                 echo "\n└──────── °∘❉∘° ────────┘\n\n";

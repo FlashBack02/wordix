@@ -89,20 +89,19 @@ function obtenerResumenJugador($coleccionPartidas, $nombreJugador)
 
             if ($coleccionPartidas[$i]["puntaje"] > 0) {
                 $contadorVictorias++;
-            }
-
-            if($coleccionPartidas[$i]["intentos"] == 0)
+                if($coleccionPartidas[$i]["intentos"] == 1)
                 $contadorIntentos1++;
-            elseif($coleccionPartidas[$i]["intentos"] == 1)
+                elseif($coleccionPartidas[$i]["intentos"] == 2)
                 $contadorIntentos2++;
-            elseif($coleccionPartidas[$i]["intentos"] == 2)
+                elseif($coleccionPartidas[$i]["intentos"] == 3)
                 $contadorIntentos3++;
-            elseif($coleccionPartidas[$i]["intentos"] == 3)
+                elseif($coleccionPartidas[$i]["intentos"] == 4)
                 $contadorIntentos4++;
-            elseif($coleccionPartidas[$i]["intentos"] == 4)
+                elseif($coleccionPartidas[$i]["intentos"] == 5)
                 $contadorIntentos5++;
-            elseif($coleccionPartidas[$i]["intentos"] == 5)
+                elseif($coleccionPartidas[$i]["intentos"] == 6)
                 $contadorIntentos6++;
+            }
         }
     }
     if ($contadorPartidas > 0) {

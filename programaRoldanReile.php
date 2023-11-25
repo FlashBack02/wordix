@@ -23,9 +23,9 @@ function cargarColeccionPalabras()
 {
     // ARRAY $coleccionPalabras
     $coleccionPalabras = [
-        "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
-        "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
+        //"MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
+        //"GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
+        //"VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         "CASAS", "LIMON", "JAMON", "PERRO", "SOPAS"
     ];
 
@@ -329,19 +329,31 @@ do {
             $cantPartidas = count($partidasCargadas);
             $cantPalabras = count($coleccionPalabras);
             $numRandom = random_int(0, $cantPalabras - 1); //Genera un número entero aleatorio entre el mínimo y el máximo dados.
+            $i = 1;
 
            // Verificar que la palabra no ha sido usada por el jugador antes
-            while (existePalabraEnPartidas($nombreJugador, $coleccionPalabras[$numRandom], $partidasCargadas)) {
+            while (existePalabraEnPartidas($nombreJugador, $coleccionPalabras[$numRandom], $partidasCargadas) && $i <= $cantPalabras) {
               $numRandom = random_int(0, $cantPalabras - 1); 
+              $i++;
             }
 
-            $partida = jugarWordix($coleccionPalabras[$numRandom], $nombreJugador);
-            $partidasCargadas[] = [
-                 "palabraWordix" => $partida["palabraWordix"],
-                 "jugador" => $nombreJugador,
-                 "intentos" => $partida["intentos"],
-                 "puntaje" => $partida["puntaje"]
-            ];
+            if ($i != $cantPalabras + 1){
+                $partida = jugarWordix($coleccionPalabras[$numRandom], $nombreJugador);
+                $partidasCargadas[] = [
+                     "palabraWordix" => $partida["palabraWordix"],
+                     "jugador" => $nombreJugador,
+                     "intentos" => $partida["intentos"],
+                     "puntaje" => $partida["puntaje"]
+                ];
+            } else {
+                echo "\n─────▄───▄ \n";
+                echo "─▄█▄─█▀█▀█─▄█▄ \n";
+                echo "▀▀████▄█▄████▀▀\n";
+                echo "─────▀█▀█▀ \n";
+                echo "Error, el jugador ". $nombreJugador  . ":\n";
+                echo "ya jugó con todas las palabras";
+                echo "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n";
+            }
             break;
         case 3: 
             //int  $cantPartidas

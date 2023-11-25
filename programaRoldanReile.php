@@ -23,9 +23,9 @@ function cargarColeccionPalabras()
 {
     // ARRAY $coleccionPalabras
     $coleccionPalabras = [
-        //"MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
-        //"GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        //"VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
+        "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
+        "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         "CASAS", "LIMON", "JAMON", "PERRO", "SOPAS"
     ];
 
@@ -207,6 +207,30 @@ function existePalabraEnPartidas($jugador, $palabra, $partidasC) {
             $existe = true;
         }
 
+        $i++;
+    }
+    
+    return $existe;
+}
+
+/**
+ * Funcion que verifica que una palabra no exista dentro del arreglo de palabras para jugar
+ * @param string $palabra
+ * @param array $palabrasC
+ * @return bool
+ */
+function existePalabra($palabra, $palabrasC) {
+    //int $numPalabras, $i
+    //bool $existe
+    $numPalabras = count($palabrasC);
+    $existe = false;
+    $i = 0;
+
+    while ($i < $numPalabras && $existe == false) {
+
+        if (strtolower($palabrasC[$i]) == strtolower($palabra)) { // strtolower — Convierte un string a minúsculas
+            $existe = true;
+        }
         $i++;
     }
     
@@ -430,6 +454,23 @@ do {
             //string $nuevaPalabra
             //array $coleccionPalabras
              $nuevaPalabra = leerPalabra5Letras();
+             $cantPalabras = count($coleccionPalabras);
+             $i = 1;
+
+
+             while (existePalabra($nuevaPalabra, $coleccionPalabras) && $i <= $cantPalabras) {
+                echo "\n─────▄───▄ \n";
+                echo "─▄█▄─█▀█▀█─▄█▄ \n";
+                echo "▀▀████▄█▄████▀▀\n";
+                echo "─────▀█▀█▀ \n";
+                echo "La palabra ". $nuevaPalabra . " ya existe, vuelva a intentarlo. \n";
+                $nuevaPalabra = leerPalabra5Letras(); 
+                $i++;
+            }
+
+            echo "\n\nﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ\n";
+            echo "¡Su palabra " . $nuevaPalabra. " se agregó correctamente!\n";
+            echo "ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ \n\n";
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
 
            break;

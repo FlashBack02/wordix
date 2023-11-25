@@ -142,7 +142,7 @@ function seleccionarOpcion()
      echo "7) Agregar una palabra de 5 letras a Wordix \n";
      echo "8) salir \n \n";
      echo "┗━━━━━━•(=^●ω●^=)•━━━━━━┛ \n";
-     $opc = trim(fgets(STDIN));
+     $opc = solicitarNumeroEntre(1, 8);
      return $opc;
  }
  
@@ -426,15 +426,6 @@ do {
                 echo "  Gracias por utilizar el programa \n";
                 echo "❀.•° ✿.•° ❀.•° ✿.•°•.✿ °•.❀ °•.✿ °•.❀ \n\n";
             break; 
-        default: 
-            echo "\n─────▄───▄ \n";
-            echo "─▄█▄─█▀█▀█─▄█▄ \n";
-            echo "▀▀████▄█▄████▀▀\n";
-            echo "─────▀█▀█▀ \n";
-            echo escribirRojo("ERROR, no existe esa opción X_X")."\n";
-            echo escribirRojo("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")."\n";
-            echo escribirRojo("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")."\n";
-        break;
 
     }
 } while ($opcion != 8);

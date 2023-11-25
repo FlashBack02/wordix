@@ -338,12 +338,7 @@ do {
             $cantPalabras = count($coleccionPalabras);
             $numPalabra = solicitarNumeroEntre(1, $cantPalabras);
             $partida = jugarWordix($coleccionPalabras[$numPalabra-1], $nombreJugador);
-            $partidasCargadas[] = [
-                "palabraWordix" => $partida["palabraWordix"],
-                "jugador" => $nombreJugador,
-                 "intentos" => $partida["intentos"],
-                 "puntaje" => $partida["puntaje"]
-            ];
+            $partidasCargadas[] = $partida;
             break; // Las sentencias break que aparecen tras cada ConjuntoDeSentencias provocan que el control salga del switch y continúe con la siguiente instrucción al switch.
         case 2: 
             //string $nombreJugador
@@ -363,12 +358,7 @@ do {
 
             if ($i != $cantPalabras + 1){
                 $partida = jugarWordix($coleccionPalabras[$numRandom], $nombreJugador);
-                $partidasCargadas[] = [
-                     "palabraWordix" => $partida["palabraWordix"],
-                     "jugador" => $nombreJugador,
-                     "intentos" => $partida["intentos"],
-                     "puntaje" => $partida["puntaje"]
-                ];
+                $partidasCargadas[] = $partida;
             } else {
                 echo "\n─────▄───▄ \n";
                 echo "─▄█▄─█▀█▀█─▄█▄ \n";

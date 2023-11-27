@@ -445,23 +445,34 @@ do {
             //array $coleccionPalabras
              $nuevaPalabra = leerPalabra5Letras();
              $cantPalabras = count($coleccionPalabras);
-             $i = 1;
+             $seleccion = "s";
 
 
-             while (existePalabra($nuevaPalabra, $coleccionPalabras) && $i <= $cantPalabras) {
+             while (existePalabra($nuevaPalabra, $coleccionPalabras) && $seleccion == "s" || $seleccion == "S") {
                 echo "\n─────▄───▄ \n";
                 echo "─▄█▄─█▀█▀█─▄█▄ \n";
                 echo "▀▀████▄█▄████▀▀\n";
                 echo "─────▀█▀█▀ \n";
-                echo "La palabra ". $nuevaPalabra . " ya existe, vuelva a intentarlo. \n";
-                $nuevaPalabra = leerPalabra5Letras(); 
-                $i++;
+                echo "La palabra ". $nuevaPalabra . " ya existe, vuelva a intentarlo. \n \n";
+                echo "¿Desea agregar una palabra a la colección? (s/n) \n";
+                echo "s: sí quiero continuar agregando una palabra. \n";
+                echo "n: quiero volver al menu principal. \n";
+                echo escribirRojo("SELECCIONE -s- PARA CONTINUAR O -n- PARA VOLVER AL MENU PRINCIPAL:") . "\n";
+                $seleccion = trim(fgets(STDIN));
+                if ($seleccion == "s" || $seleccion == "S"){
+                    $nuevaPalabra = leerPalabra5Letras();
+                } else{
+                    echo "No agregó palabras para jugar. \n";
+                }
+        
             }
 
-            echo "\n\nﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ\n";
-            echo "¡Su palabra " . $nuevaPalabra. " se agregó correctamente!\n";
-            echo "ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ \n\n";
-            $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
+            if ($seleccion == "s"|| $seleccion == "S"){
+                echo "\n\nﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ\n";
+                echo "¡Su palabra " . $nuevaPalabra. " se agregó correctamente!\n";
+                echo "ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ+o｡o｡o+ﾟ☆ﾟ \n\n";
+                $coleccionPalabras = agregarPalabra($coleccionPalabras,$nuevaPalabra);
+            }
 
            break;
         case 8: 

@@ -155,7 +155,7 @@ function esPalabra($cadena)
 {
     //int $cantCaracteres, $i
     //boolean $esLetra
-    $cantCaracteres = strlen($cadena); //  Obtiene la longitud de la cadena. STRLEN = convierte un strean en INT
+    $cantCaracteres = strlen($cadena); //  Obtiene la longitud de la cadena. STRLEN = convierte un string en INT
     $esLetra = true;
     $i = 0;
     while ($esLetra && $i < $cantCaracteres) {
@@ -178,7 +178,7 @@ function leerPalabra5Letras()
     $palabra = trim(fgets(STDIN));
     $palabra  = strtoupper($palabra); // STROTOUPPER = Convierte la palabra ingresada a mayúscula.
 
-    while ((strlen($palabra) != 5) || !esPalabra($palabra)) { //STRLEN = convierte un strean en INT
+    while ((strlen($palabra) != 5) || !esPalabra($palabra)) { //STRLEN = convierte un string en INT
         echo "Debe ingresar una palabra de 5 letras:";
         $palabra = strtoupper(trim(fgets(STDIN)));
     }
